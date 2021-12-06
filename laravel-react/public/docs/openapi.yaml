@@ -1,0 +1,405 @@
+openapi: 3.0.3
+info:
+  title: Laravel-React
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/login:
+    post:
+      summary: 'Login API'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"access_token\": {{token}},\n \"token_type\": \"Bearer\",\n}"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the  user.'
+                  example: superadmin@invoke.com
+                password:
+                  type: string
+                  description: 'The password of the  user.'
+                  example: password
+              required:
+                - email
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: 'Register User API.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the  user.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'The email of the  user.'
+                  example: user@example.com
+                password:
+                  type: string
+                  description: 'The password of the  user.'
+                  example: password
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /api/createCategory:
+    post:
+      summary: 'Create Category API.'
+      description: 'category status by default is 1: active. if delete change to 2:delete'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be between 2 and 100 characters.'
+                  example: zsoiriluxyzmmhrrtxjuqozxrmkvsynjlfaqnkfqgqqhyxit
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 12
+                status:
+                  type: integer
+                  description: ''
+                  example: 12
+              required:
+                - name
+                - user_id
+                - status
+      security: []
+  /api/createTask:
+    post:
+      summary: 'Create Task API.'
+      description: 'task status by default is 1: active. if delete change to 2:delete'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The category name.'
+                  example: 'Finish coding'
+                user_id:
+                  type: number
+                  description: 'The user id.'
+                  example: !!float 2
+                status:
+                  type: number
+                  description: 'The task status.'
+                  example: !!float 1
+                category_id:
+                  type: number
+                  description: 'The category id.'
+                  example: !!float 1
+              required:
+                - name
+                - user_id
+                - status
+                - category_id
+      security: []
+  /api/logout:
+    post:
+      summary: 'Log the user out (Invalidate the token).'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {{token}}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the  user.'
+                  example: superadmin@invoke.com
+                password:
+                  type: string
+                  description: 'The password of the  user.'
+                  example: password
+              required:
+                - email
+                - password
+  /api/userProfile:
+    post:
+      summary: 'Get the authenticated User.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {{token}}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the  user.'
+                  example: superadmin@invoke.com
+                password:
+                  type: string
+                  description: 'The password of the  user.'
+                  example: password
+              required:
+                - email
+                - password
+  /api/index:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/getCategory/{id}':
+    post:
+      summary: 'Get Category API.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {{token}}'
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the getCategory.'
+        example: atque
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: masukkan
+        description: 'Optional parameter. user_id integer who create the categories in the TOP box'
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: vel
+  '/api/updateCategory/{id}':
+    post:
+      summary: 'Update/Edit/Soft Delete Category API.'
+      description: 'category status by default is 1: active. if delete change to 2:delete'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the updateCategory.'
+        example: quo
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''
